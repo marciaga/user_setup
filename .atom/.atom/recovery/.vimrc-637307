@@ -1,0 +1,164 @@
+set nocompatible " be iMproved, required for Vundle
+filetype off " required for vundle
+execute pathogen#infect()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'git://github.com/kien/ctrlp.vim.git'
+Plugin 'git://github.com/tpope/vim-rails.git'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'xsbeats/vim-blade'
+Bundle 'mattn/emmet-vim'
+Bundle 'othree/html5.vim'
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+"All of your Plugins must be added before the following line
+call vundle#end()
+" Brief help
+" :PluginList          - list configured plugins
+" :PluginInstall(!)    - install (update) plugins
+" :PluginSearch(!) foo - search (or refresh cache first) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+
+" see :h vundle for more details or wiki for FAQ
+
+filetype plugin indent on " required for Vundle
+
+" Put non-Plugin stuff below
+let mapleader = ","
+let g:mapleader = ","
+
+set nu " display line numbers
+syntax on " syntax highlighting
+set tabstop=2 " set tabs
+set t_Co=256 " colors
+
+" Show whitespace
+" MUST be inserted BEFORE the colorscheme command
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+colorscheme lucius
+set background=dark
+
+au BufNewFile, BufRead *.handlebars set file type=html
+
+set statusline=%{fugitive#statusline()} " show Git branch in status line
+set laststatus=2 " display the status line always
+set clipboard=unnamed " interact with the OS clipboard
+set expandtab " inserts space characters whenever tab key is pressed
+set shiftwidth=2 " use 2 spaces for indentation
+set shiftround " use multiple of shiftwidth when indenting with < or >
+set showmatch " set show matching parentheses
+set linespace=15
+set nowrap
+set smarttab
+set tags=tags;
+set backspace=indent,eol,start
+set autoindent
+set copyindent
+set number
+set timeout timeoutlen=200 ttimeoutlen=100
+set visualbell
+set noerrorbells
+set autowrite
+
+" airline specific stuff
+
+" don't show the status bar under the airline
+set noshowmode
+
+" remap tab switching
+map  <C-l> :tabn<CR>
+map  <C-h> :tabp<CR>
+
+" Make search case insensitive
+set hlsearch " highlight search terms
+set incsearch " show search matches as you type
+set ignorecase " ignore case when searching
+set smartcase " ignore case if search pattern is all lowercase, case sensitive otherwise
+
+" these are used to display compiler errors
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+" Ruby-specific settings
+au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" other file type settings
+au FileType javascript set softtabstop=2 tabstop=2 shiftwidth=2
+au FileType typescript set softtabstop=2 tabstop=2 shiftwidth=2
+au FileType html set softtabstop=2 tabstop=2 shiftwidth=2
+au FileType css set softtabstop=2 tabstop=2 shiftwidth=2
+au FileType php set softtabstop=4 tabstop=4 shiftwidth=4
+
+" New stuff
+
+" Fast saves
+nmap <leader>w :w!<cr>
+
+" Down is really the next line
+nnoremap j gj
+nnoremap k gk
+
+"Easy escaping to nomral mode
+imap jj <esc>
+
+"Auto change directory to match current file, cd
+nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+
+nmap <C-b> :NERDTreeToggle<cr>
+
+"Show (partial) command in the status line
+set showcmd
+
+highlight Search cterm=underline
+
+" Swap files out of the project root
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+
+" Remove search results
+command! H let @/=""
+
+"CtrlP Stuff
+map <D-p> :CtrlP<cr>
+map <C-r> :CtrlPBufTag<cr>
+
+" Ignore these folders when using Ctrl-P
+set wildignore+=*/vendor/**
+set wildignore+=*/public/forum/**
+
+"Create/edit file in the current directory
+nmap :ed :edit %:p:h/
+
+
+" Airline stuff
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 0
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline#extensions#ctrlp#color_template = 'insert'
+let g:airline#extensions#ctrlp#color_template = 'normal'
+let g:airline#extensions#ctrlp#color_template = 'visual'
+let g:airline#extensions#ctrlp#color_template = 'replace'

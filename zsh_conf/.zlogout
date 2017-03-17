@@ -1,0 +1,1 @@
+/Users/marciaga/.zprezto/runcoms/zlogout

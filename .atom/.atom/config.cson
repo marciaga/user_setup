@@ -1,0 +1,36 @@
+"*":
+  autosave:
+    enabled: true
+  core:
+    audioBeep: false
+    disabledPackages: [
+      "linter"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "atom-material-ui"
+      "atom-material-syntax"
+    ]
+  editor:
+    backUpBeforeSaving: true
+    fontFamily: "menlo"
+    fontSize: 15
+    preferredLineLength: 200
+    showIndentGuide: true
+    showInvisibles: true
+    tabLength: 4
+    tabType: "soft"
+  "exception-reporting":
+    userId: "a88aa5d2-9f51-ba85-627c-c05ec185536d"
+  "linter-eslint": {}
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  "vim-mode-plus":
+    useClipboardAsDefaultRegister: true
+  "webbox-color": {}
+  welcome:
+    showOnStartup: false
+".blade.html.php.text":
+  editor:
+    commentEnd: " --}}"
+    commentStart: "{{-- "

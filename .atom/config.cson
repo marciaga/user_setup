@@ -1,0 +1,26 @@
+"*":
+  autosave:
+    enabled: true
+  core:
+    audioBeep: false
+    telemetryConsent: "no"
+    themes: [
+      "atom-material-ui"
+      "atom-material-syntax"
+    ]
+  editor:
+    backUpBeforeSaving: true
+    fontFamily: "menlo"
+    showIndentGuide: true
+    showInvisibles: true
+    tabLength: 4
+    tabType: "soft"
+  "exception-reporting":
+    userId: "a88aa5d2-9f51-ba85-627c-c05ec185536d"
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
+".blade.html.php.text":
+  editor:
+    commentEnd: " --}}"
+    commentStart: "{{-- "
